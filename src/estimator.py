@@ -1,23 +1,31 @@
+def requestedDays(data):
+    if data['periodType'] == 'days':
+          requestedTime = data['timeToElapse']
+          return requestedTime
+    elif data['periodType'] == 'weeks':
+          requestedTime = data['timeToElapse'] * 7
+          return requestedTime
+    elif data['periodType'] == 'months':
+          requestedTime = data['timeToElapse'] * 30
+          return requestedTime
+
 def estimator(data):
-    # print(data)
     reportedCases = data['reportedCases']
     currentlyInfected = reportedCases * 10
-    severeImpact = reportedCases * 50
-    # severeImpact = currentlyInfected * 5
-    requestedTime = data['timeToElapse']//3
+    # severeImpact = reportedCases * 50
+    severeImpact = currentlyInfected * 5
+    requestedTimeSet = requestedDays(data) / 3
 
-
-    data1 = {
+    data = {
         'data' : data,
         'impact': {
           'currentlyInfected': currentlyInfected,
-          'infectionsByRequestedTime': currentlyInfected * int(2 ** requestedTime)
+          'infectionsByRequestedTime': int(currentlyInfected * 2 ** requestedTimeSet)
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
-          'infectionsByRequestedTime' : severeImpact * int(2 ** requestedTime)
+          'infectionsByRequestedTime' : int(severeImpact * 2 ** requestedTimeSet)
         }
     }
 
-    print(data1)
-    return data1
+    return data
