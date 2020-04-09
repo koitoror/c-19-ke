@@ -9,24 +9,24 @@ def estimator(data):
     # # infectionsByRequestedTime = currentlyInfected * (2 ** requestedTime),
     # infectionsByRequestedTimeC : currentlyInfected * (2 ** requestedTime)
     # infectionsByRequestedTimeS : severeImpact * (2 ** requestedTime)
-    infectionsByRequestedTime = {}
+    # infectionsByRequestedTime = {}
 
     
     impact = {
         currentlyInfected,
     }
 
-    data1 = {
-        data : data,
-        impact: {
-          currentlyInfected: currentlyInfected,
-          infectionsByRequestedTime: currentlyInfected * (2 ** requestedTime)
+    data = {
+        'data' : data,
+        'impact': {
+          'currentlyInfected': currentlyInfected,
+          'infectionsByRequestedTime': currentlyInfected * (2 ** requestedTime)
         },
-        severeImpact: {
-          severeImpact: severeImpact,
-          currentlyInfected: currentlyInfected,
-          infectionsByRequestedTime : severeImpact * (2 ** requestedTime)
+        'severeImpact': {
+          'severeImpact': severeImpact,
+          'currentlyInfected': currentlyInfected,
+          'infectionsByRequestedTime' : severeImpact * (2 ** requestedTime)
         }
     }
 
-    return data1
+    return data
