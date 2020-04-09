@@ -30,7 +30,7 @@ def estimator(data):
     casesForVentilatorsByRequestedTimeC = float(.02 * infectionsByRequestedTimeC)
     casesForVentilatorsByRequestedTimeS = float(.02 * infectionsByRequestedTimeS)
 
-    avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD:']
+    avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
     dollarsInFlightC = int(infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30)
     dollarsInFlightS = int(infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30)
