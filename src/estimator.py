@@ -1,5 +1,6 @@
 def estimator(data):
-    reportedCases = data.reportedCases
+    print(data)
+    reportedCases = data[data]
     currentlyInfected = reportedCases * 10
     severeImpact = reportedCases * 50
     # severeImpact = currentlyInfected * 5
