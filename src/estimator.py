@@ -1,5 +1,3 @@
-from math import floor
-
 def requestedDays(data):
     if data['periodType'] == 'days':
           requestedTime = data['timeToElapse']
@@ -15,7 +13,7 @@ def estimator(data):
     reportedCases = data['reportedCases']
     currentlyInfected = reportedCases * 10
     severeImpact = currentlyInfected * 5
-    requestedTimeSet = floor(requestedDays(data) / 3)
+    requestedTimeSet = requestedDays(data) // 3
 
     data = {
         'data' : data,
