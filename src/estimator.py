@@ -33,8 +33,8 @@ def estimator(data):
 
     avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
-    dollarsInFlightC = (infectionsByRequestedTimeC * avgDailyIncomePopulation * 100) / 100 * avgDailyIncomeInUSD * float(days)
-    dollarsInFlightS = (infectionsByRequestedTimeS * avgDailyIncomePopulation * 100) / 100 * avgDailyIncomeInUSD * float(days) 
+    dollarsInFlightC = (infectionsByRequestedTimeC * avgDailyIncomePopulation) * avgDailyIncomeInUSD * float(days) * 100 / 100
+    dollarsInFlightS = (infectionsByRequestedTimeS * avgDailyIncomePopulation) * avgDailyIncomeInUSD * float(days) * 100 / 100
 
 
 
