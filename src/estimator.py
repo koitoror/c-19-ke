@@ -1,4 +1,4 @@
-from math import ceil
+from math import floor
 
 def requestedDays(data):
     if data['periodType'] == 'days':
@@ -16,7 +16,7 @@ def estimator(data):
     currentlyInfected = reportedCases * 10
     # severeImpact = reportedCases * 50
     severeImpact = currentlyInfected * 5
-    requestedTimeSet = ceil(requestedDays(data) / 3)
+    requestedTimeSet = floor(requestedDays(data) / 3)
 
     data = {
         'data' : data,
