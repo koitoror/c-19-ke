@@ -14,7 +14,6 @@ def requestedDays(data):
 def estimator(data):
     reportedCases = data['reportedCases']
     currentlyInfected = reportedCases * 10
-    # severeImpact = reportedCases * 50
     severeImpact = currentlyInfected * 5
     requestedTimeSet = floor(requestedDays(data) / 3)
 
