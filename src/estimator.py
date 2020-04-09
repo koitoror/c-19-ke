@@ -16,17 +16,17 @@ def estimator(data):
         currentlyInfected,
     }
 
-    data = {
+    data1 = {
         data : data,
         impact: {
           currentlyInfected: currentlyInfected,
-          infectionsByRequestedTime: currentlyInfected * (2 ** requestedTime),
+          infectionsByRequestedTime: currentlyInfected * (2 ** requestedTime)
         },
         severeImpact: {
           severeImpact: severeImpact,
           currentlyInfected: currentlyInfected,
-          infectionsByRequestedTime : severeImpact * (2 ** requestedTime),
+          infectionsByRequestedTime : severeImpact * (2 ** requestedTime)
         }
     }
 
-    return data
+    return data1
