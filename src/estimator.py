@@ -13,7 +13,8 @@ def estimator(data):
     reportedCases = data['reportedCases']
     currentlyInfected = reportedCases * 10
     severeImpact = currentlyInfected * 5
-    requestedTimeSet = requestedDays(data) // 3
+    days = requestedDays(data)
+    requestedTimeSet = days // 3
     infectionsByRequestedTimeC = float(currentlyInfected * 2 ** requestedTimeSet)
     infectionsByRequestedTimeS = float(severeImpact * 2 ** requestedTimeSet)
 
@@ -32,8 +33,8 @@ def estimator(data):
 
     avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
-    dollarsInFlightC = int(infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30)
-    dollarsInFlightS = int(infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30)
+    dollarsInFlightC = float(int(infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * days))
+    dollarsInFlightS = float(int(infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * days))
 
 
 
