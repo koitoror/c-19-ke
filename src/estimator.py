@@ -25,19 +25,38 @@ def estimator(data):
     hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
     hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
 
+    casesForICUByRequestedTimeC = float(.05 * infectionsByRequestedTimeC)
+    casesForICUByRequestedTimeS = float(.05 * infectionsByRequestedTimeS)
+    casesForVentilatorsByRequestedTimeC = float(.02 * infectionsByRequestedTimeC)
+    casesForVentilatorsByRequestedTimeS = float(.02 * infectionsByRequestedTimeS)
+
+    avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD:']
+    avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
+    dollarsInFlightC = int(infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30)
+    dollarsInFlightS = int(infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * 30)
+
+
+
+
     data = {
         'data' : data,
         'impact': {
           'currentlyInfected': currentlyInfected,
           'infectionsByRequestedTime': infectionsByRequestedTimeC,
           'severeCasesByRequestedTime' : severeCasesByRequestedTimeC,
-          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC
+          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
+          'casesForICUByRequestedTime' : casesForICUByRequestedTimeC,
+          'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeC,
+          'dollarsInFlight' : dollarsInFlightC
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
           'infectionsByRequestedTime' : infectionsByRequestedTimeS,
           'severeCasesByRequestedTime' : severeCasesByRequestedTimeS,
-          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS
+          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS,
+          'casesForICUByRequestedTime' : casesForICUByRequestedTimeS,
+          'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeS,
+          'dollarsInFlight' : dollarsInFlightS
         }
     }
 
