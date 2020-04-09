@@ -19,21 +19,23 @@ def estimator(data):
 
     #     population = data['population']
     totalHospitalBeds = data['totalHospitalBeds']
-    severeCasesByRequestedTime = float(.15 * infectionsByRequestedTimeS)
+    severeCasesByRequestedTimeC = float(.15 * infectionsByRequestedTimeC)
+    severeCasesByRequestedTimeS = float(.15 * infectionsByRequestedTimeS)
     expectedHospitalBeds = float(.35 * totalHospitalBeds)
-    hospitalBedsByRequestedTime = int(expectedHospitalBeds - severeCasesByRequestedTime)
+    hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
 
     data = {
         'data' : data,
         'impact': {
           'currentlyInfected': currentlyInfected,
-          'infectionsByRequestedTime': infectionsByRequestedTimeC
+          'infectionsByRequestedTime': infectionsByRequestedTimeC,
+          'severeCasesByRequestedTime' : severeCasesByRequestedTimeC,
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
           'infectionsByRequestedTime' : infectionsByRequestedTimeS,
-          'severeCasesByRequestedTime' : severeCasesByRequestedTime,
-          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTime
+          'severeCasesByRequestedTime' : severeCasesByRequestedTimeS,
+          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS
         }
     }
 
