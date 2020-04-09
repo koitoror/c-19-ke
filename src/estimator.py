@@ -6,10 +6,10 @@ def estimator(data):
     # severeImpact = currentlyInfected * 5
     # severeImpact.currentlyInfected = currentlyInfected
     requestedTime = (data['timeToElapse'])/3
-    # # infectionsByRequestedTime = currentlyInfected ** requestedTime,
-    # infectionsByRequestedTimeC : currentlyInfected ** requestedTime
-    # infectionsByRequestedTimeS : severeImpact ** requestedTime
-    infectionsByRequestedTime = ''
+    # # infectionsByRequestedTime = currentlyInfected * (2 ** requestedTime),
+    # infectionsByRequestedTimeC : currentlyInfected * (2 ** requestedTime)
+    # infectionsByRequestedTimeS : severeImpact * (2 ** requestedTime)
+    infectionsByRequestedTime = {}
 
     
     impact = {
