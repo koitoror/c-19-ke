@@ -1,3 +1,5 @@
+from math import ceil
+
 def requestedDays(data):
     if data['periodType'] == 'days':
           requestedTime = data['timeToElapse']
@@ -14,17 +16,17 @@ def estimator(data):
     currentlyInfected = reportedCases * 10
     # severeImpact = reportedCases * 50
     severeImpact = currentlyInfected * 5
-    requestedTimeSet = requestedDays(data) / 3
+    requestedTimeSet = ceil(requestedDays(data) / 3)
 
     data = {
         'data' : data,
         'impact': {
           'currentlyInfected': currentlyInfected,
-          'infectionsByRequestedTime': int(currentlyInfected * 2 ** requestedTimeSet)
+          'infectionsByRequestedTime': float(currentlyInfected * 2 ** requestedTimeSet)
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
-          'infectionsByRequestedTime' : int(severeImpact * 2 ** requestedTimeSet)
+          'infectionsByRequestedTime' : float(severeImpact * 2 ** requestedTimeSet)
         }
     }
 
