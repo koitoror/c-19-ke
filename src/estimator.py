@@ -1,11 +1,11 @@
 def estimator(data):
-    print(data)
-    reportedCases = data[data]
+    # print(data)
+    reportedCases = data['reportedCases']
     currentlyInfected = reportedCases * 10
     severeImpact = reportedCases * 50
     # severeImpact = currentlyInfected * 5
     # severeImpact.currentlyInfected = currentlyInfected
-    requestedTime = data.timeToElapse/3
+    requestedTime = (data['timeToElapse'])/3
     # # infectionsByRequestedTime = currentlyInfected ** requestedTime,
     # infectionsByRequestedTimeC : currentlyInfected ** requestedTime
     # infectionsByRequestedTimeS : severeImpact ** requestedTime
