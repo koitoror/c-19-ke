@@ -54,8 +54,8 @@ def estimator(data):
           'infectionsByRequestedTime': infectionsByRequestedTimeC,
           'severeCasesByRequestedTime' : severeCasesByRequestedTimeC,
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
-          'casesForICUByRequestedTime' : casesForICUByRequestedTimeC,
-          'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeC,
+          'casesForICUByRequestedTime' : truncate(casesForICUByRequestedTimeC),
+          'casesForVentilatorsByRequestedTime' : truncate(casesForVentilatorsByRequestedTimeC),
           'dollarsInFlight' : truncate(dollarsInFlightC)
         },
         'severeImpact': {
@@ -63,8 +63,8 @@ def estimator(data):
           'infectionsByRequestedTime' : infectionsByRequestedTimeS,
           'severeCasesByRequestedTime' : severeCasesByRequestedTimeS,
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS,
-          'casesForICUByRequestedTime' : casesForICUByRequestedTimeS,
-          'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeS,
+          'casesForICUByRequestedTime' : truncate(casesForICUByRequestedTimeS),
+          'casesForVentilatorsByRequestedTime' : truncate(casesForVentilatorsByRequestedTimeS),
           'dollarsInFlight' : truncate(dollarsInFlightS)
         }
     }
