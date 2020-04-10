@@ -38,7 +38,7 @@ def estimator(data):
 
     def truncate(n, decimals=0):
         multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
+        return float(n * multiplier) / multiplier
 
     data = {
         'data' : data,
