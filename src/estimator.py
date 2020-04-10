@@ -23,40 +23,26 @@ def estimator(data):
     severeImpact = currentlyInfected * 5
     days = requestedDays(data)
     requestedTimeSet = days // 3
-    infectionsByRequestedTimeC = float(
-        currentlyInfected * 2 ** requestedTimeSet)
-    infectionsByRequestedTimeS = float(
-        severeImpact * 2 ** requestedTimeSet)
+    infectionsByRequestedTimeC = float(currentlyInfected * 2 ** requestedTimeSet)
+    infectionsByRequestedTimeS = float(severeImpact * 2 ** requestedTimeSet)
 
     #     population = data['population']
     totalHospitalBeds = data['totalHospitalBeds']
-    severeCasesByRequestedTimeC = float(.15 *
-                                        infectionsByRequestedTimeC)
-    severeCasesByRequestedTimeS = float(.15 *
-                                        infectionsByRequestedTimeS)
+    severeCasesByRequestedTimeC = float(.15 * infectionsByRequestedTimeC)
+    severeCasesByRequestedTimeS = float(.15 * infectionsByRequestedTimeS)
     expectedHospitalBeds = float(.35 * totalHospitalBeds)
-    hospitalBedsByRequestedTimeC = int(
-        expectedHospitalBeds -
-        severeCasesByRequestedTimeC)
-    hospitalBedsByRequestedTimeS = int(
-        expectedHospitalBeds -
-        severeCasesByRequestedTimeS)
+    hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
+    hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
 
-    casesForICUByRequestedTimeC = float(.05 *
-                                        infectionsByRequestedTimeC)
-    casesForICUByRequestedTimeS = float(.05 *
-                                        infectionsByRequestedTimeS)
-    casesForVentilatorsByRequestedTimeC = float(
-        .02 * infectionsByRequestedTimeC)
-    casesForVentilatorsByRequestedTimeS = float(
-        .02 * infectionsByRequestedTimeS)
+    casesForICUByRequestedTimeC = float(.05 * infectionsByRequestedTimeC)
+    casesForICUByRequestedTimeS = float(.05 * infectionsByRequestedTimeS)
+    casesForVentilatorsByRequestedTimeC = float( .02 * infectionsByRequestedTimeC)
+    casesForVentilatorsByRequestedTimeS = float( .02 * infectionsByRequestedTimeS)
 
     avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
-    dollarsInFlightC = infectionsByRequestedTimeC * \
-        avgDailyIncomePopulation * avgDailyIncomeInUSD * days
-    dollarsInFlightS = infectionsByRequestedTimeS * \
-        avgDailyIncomePopulation * avgDailyIncomeInUSD * days
+    dollarsInFlightC = infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
+    dollarsInFlightS = infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
 
     #     def round_down(n, decimals=0):
     #         #   multiplier = 10 ** decimals
@@ -75,7 +61,6 @@ def estimator(data):
     #         return x
 
     #     def truncate(n):
-
     #         return n // 1
 
     data = {
