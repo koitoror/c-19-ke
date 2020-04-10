@@ -13,8 +13,9 @@ def requestedDays(data):
         return requestedTime
 
 
-# def trunc(n):
-#     return int(n * 1) / 1.0
+def trunc(n):
+    return n // 1
+
 
 def estimator(data):
     reportedCases = data['reportedCases']
@@ -57,26 +58,25 @@ def estimator(data):
     dollarsInFlightS = infectionsByRequestedTimeS * \
         avgDailyIncomePopulation * avgDailyIncomeInUSD * days
 
-#     def round_down(n, decimals=0):
-#         #   multiplier = 10 ** decimals
-#         #   return floor(n * multiplier) / multiplier
-#         return n // 1
+    #     def round_down(n, decimals=0):
+    #         #   multiplier = 10 ** decimals
+    #         #   return floor(n * multiplier) / multiplier
+    #         return n // 1
 
-#     def truncate(n, decimals=0):
-#         multiplier = 10 ** decimals
-#         x = floor(n * multiplier) / multiplier
-#         return round_down(x)
+    #     def truncate(n, decimals=0):
+    #         multiplier = 10 ** decimals
+    #         x = floor(n * multiplier) / multiplier
+    #         return round_down(x)
 
-    def truncate(num, digits=0):
-        sp = str(num).split('.')
-        x = '.'.join([sp[0], sp[1][:digits]])
-        #   return float(x)
-        return x
+    #     def truncate(num, digits=0):
+    #         sp = str(num).split('.')
+    #         x = '.'.join([sp[0], sp[1][:digits]])
+    #         #   return float(x)
+    #         return x
 
+    #     def truncate(n):
 
-#     def truncate(n):
-
-#         return n // 1
+    #         return n // 1
 
     data = {
         'data': data,
