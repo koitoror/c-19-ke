@@ -13,7 +13,7 @@ def requestedDays(data):
         return requestedTime
 
 
-def trunc(n):
+def truncate(n):
     return n // 1
 
 
