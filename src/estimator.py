@@ -40,7 +40,7 @@ def estimator(data):
 
     def round_up(n, decimals=0):
         multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
+        return float(n * multiplier) / multiplier
     
     def truncate(n, decimals=0):
         multiplier = 10 ** decimals
@@ -54,8 +54,8 @@ def estimator(data):
           'infectionsByRequestedTime': infectionsByRequestedTimeC,
           'severeCasesByRequestedTime' : severeCasesByRequestedTimeC,
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
-          'casesForICUByRequestedTime' : truncate(casesForICUByRequestedTimeC),
-          'casesForVentilatorsByRequestedTime' : truncate(casesForVentilatorsByRequestedTimeC),
+          'casesForICUByRequestedTime' : casesForICUByRequestedTimeC,
+          'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeC,
           'dollarsInFlight' : truncate(dollarsInFlightC)
         },
         'severeImpact': {
@@ -63,8 +63,8 @@ def estimator(data):
           'infectionsByRequestedTime' : infectionsByRequestedTimeS,
           'severeCasesByRequestedTime' : severeCasesByRequestedTimeS,
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS,
-          'casesForICUByRequestedTime' : truncate(casesForICUByRequestedTimeS),
-          'casesForVentilatorsByRequestedTime' : truncate(casesForVentilatorsByRequestedTimeS),
+          'casesForICUByRequestedTime' : casesForICUByRequestedTimeS,
+          'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeS,
           'dollarsInFlight' : truncate(dollarsInFlightS)
         }
     }
