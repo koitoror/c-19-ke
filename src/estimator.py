@@ -45,7 +45,7 @@ def estimator(data):
     def truncate(n, decimals=0):
         multiplier = 10 ** decimals
         x = ceil(n * multiplier) / multiplier
-        return round(x, 0)
+        return round(x, -1)
 
     data = {
         'data' : data,
