@@ -11,6 +11,10 @@ def requestedDays(data):
           requestedTime = data['timeToElapse'] * 30
           return requestedTime
 
+def trunc(n):
+      x = int(n * 1)/1.0
+      return float(x)
+
 def estimator(data):
     reportedCases = data['reportedCases']
     currentlyInfected = reportedCases * 10
@@ -46,11 +50,6 @@ def estimator(data):
 #         multiplier = 10 ** decimals
 #         x = floor(n * multiplier) / multiplier
 #         return round_down(x)
-
-    def trunc(n):
-          int(n * 1)/1.0
-
-
 
 
     data = {
