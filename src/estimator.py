@@ -66,9 +66,9 @@ def estimator(data):
     #         x = floor(n * multiplier) / multiplier
     #         return round_down(x)
 
-#     def trunc(n):
+    def truncate(n):
           
-#         return int(n * 1) / 1.0
+        return n // 1
 
     data = {
         'data': data,
@@ -77,18 +77,18 @@ def estimator(data):
             'infectionsByRequestedTime': infectionsByRequestedTimeC,
             'severeCasesByRequestedTime': severeCasesByRequestedTimeC,
             'hospitalBedsByRequestedTime': hospitalBedsByRequestedTimeC,
-            'casesForICUByRequestedTime': trunc(casesForICUByRequestedTimeC),
-            'casesForVentilatorsByRequestedTime': trunc(casesForVentilatorsByRequestedTimeC),
-            'dollarsInFlight': trunc(dollarsInFlightC)
+            'casesForICUByRequestedTime': truncate(casesForICUByRequestedTimeC),
+            'casesForVentilatorsByRequestedTime': truncate(casesForVentilatorsByRequestedTimeC),
+            'dollarsInFlight': truncate(dollarsInFlightC)
             },
         'severeImpact': {
             'currentlyInfected': severeImpact,
             'infectionsByRequestedTime': infectionsByRequestedTimeS,
             'severeCasesByRequestedTime': severeCasesByRequestedTimeS,
             'hospitalBedsByRequestedTime': hospitalBedsByRequestedTimeS,
-            'casesForICUByRequestedTime': trunc(casesForICUByRequestedTimeS),
-            'casesForVentilatorsByRequestedTime': trunc(casesForVentilatorsByRequestedTimeS),
-            'dollarsInFlight': trunc(dollarsInFlightS)
+            'casesForICUByRequestedTime': truncate(casesForICUByRequestedTimeS),
+            'casesForVentilatorsByRequestedTime': truncate(casesForVentilatorsByRequestedTimeS),
+            'dollarsInFlight': truncate(dollarsInFlightS)
             }
       }
 
