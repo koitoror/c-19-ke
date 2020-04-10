@@ -13,7 +13,7 @@ def requestedDays(data):
 
 def trunc(n):
       x = int(n * 1)/1.0
-      return float(x)
+      return x
 
 def estimator(data):
     reportedCases = data['reportedCases']
