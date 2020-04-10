@@ -1,19 +1,20 @@
 from math import floor, ceil
 
+
 def requestedDays(data):
     if data['periodType'] == 'days':
-          requestedTime = data['timeToElapse']
-          return requestedTime
+        requestedTime = data['timeToElapse']
+        return requestedTime
     elif data['periodType'] == 'weeks':
-          requestedTime = data['timeToElapse'] * 7
-          return requestedTime
+        requestedTime = data['timeToElapse'] * 7
+        return requestedTime
     elif data['periodType'] == 'months':
-          requestedTime = data['timeToElapse'] * 30
-          return requestedTime
+        requestedTime = data['timeToElapse'] * 30
+        return requestedTime
 
-def trunc(n):
-      x = int(n * 1)/1.0
-      return x
+
+# def trunc(n):
+#     return int(n * 1) / 1.0
 
 def estimator(data):
     reportedCases = data['reportedCases']
@@ -21,57 +22,74 @@ def estimator(data):
     severeImpact = currentlyInfected * 5
     days = requestedDays(data)
     requestedTimeSet = days // 3
-    infectionsByRequestedTimeC = float(currentlyInfected * 2 ** requestedTimeSet)
-    infectionsByRequestedTimeS = float(severeImpact * 2 ** requestedTimeSet)
+    infectionsByRequestedTimeC = float(
+        currentlyInfected * 2 ** requestedTimeSet)
+    infectionsByRequestedTimeS = float(
+        severeImpact * 2 ** requestedTimeSet)
 
     #     population = data['population']
     totalHospitalBeds = data['totalHospitalBeds']
-    severeCasesByRequestedTimeC = float(.15 * infectionsByRequestedTimeC)
-    severeCasesByRequestedTimeS = float(.15 * infectionsByRequestedTimeS)
+    severeCasesByRequestedTimeC = float(.15 *
+                                        infectionsByRequestedTimeC)
+    severeCasesByRequestedTimeS = float(.15 *
+                                        infectionsByRequestedTimeS)
     expectedHospitalBeds = float(.35 * totalHospitalBeds)
-    hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
-    hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
+    hospitalBedsByRequestedTimeC = int(
+        expectedHospitalBeds -
+        severeCasesByRequestedTimeC)
+    hospitalBedsByRequestedTimeS = int(
+        expectedHospitalBeds -
+        severeCasesByRequestedTimeS)
 
-    casesForICUByRequestedTimeC = float(.05 * infectionsByRequestedTimeC)
-    casesForICUByRequestedTimeS = float(.05 * infectionsByRequestedTimeS)
-    casesForVentilatorsByRequestedTimeC = float(.02 * infectionsByRequestedTimeC)
-    casesForVentilatorsByRequestedTimeS = float(.02 * infectionsByRequestedTimeS)
+    casesForICUByRequestedTimeC = float(.05 *
+                                        infectionsByRequestedTimeC)
+    casesForICUByRequestedTimeS = float(.05 *
+                                        infectionsByRequestedTimeS)
+    casesForVentilatorsByRequestedTimeC = float(
+        .02 * infectionsByRequestedTimeC)
+    casesForVentilatorsByRequestedTimeS = float(
+        .02 * infectionsByRequestedTimeS)
 
     avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
-    dollarsInFlightC = infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
-    dollarsInFlightS = infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
+    dollarsInFlightC = infectionsByRequestedTimeC * \
+        avgDailyIncomePopulation * avgDailyIncomeInUSD * days
+    dollarsInFlightS = infectionsByRequestedTimeS * \
+        avgDailyIncomePopulation * avgDailyIncomeInUSD * days
 
-#     def round_down(n, decimals=0):
-#         multiplier = 10 ** decimals
-#         return floor(n * multiplier) / multiplier
-    
-#     def truncate(n, decimals=0):
-#         multiplier = 10 ** decimals
-#         x = floor(n * multiplier) / multiplier
-#         return round_down(x)
+    #     def round_down(n, decimals=0):
+    #         multiplier = 10 ** decimals
+    #         return floor(n * multiplier) / multiplier
 
+    #     def truncate(n, decimals=0):
+    #         multiplier = 10 ** decimals
+    #         x = floor(n * multiplier) / multiplier
+    #         return round_down(x)
+
+    def trunc(n):
+
+        return int(n * 1) / 1.0
 
     data = {
-        'data' : data,
+        'data': data,
         'impact': {
-          'currentlyInfected': currentlyInfected,
-          'infectionsByRequestedTime': infectionsByRequestedTimeC,
-          'severeCasesByRequestedTime' : severeCasesByRequestedTimeC,
-          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
-          'casesForICUByRequestedTime' : trunc(casesForICUByRequestedTimeC),
-          'casesForVentilatorsByRequestedTime' : trunc(casesForVentilatorsByRequestedTimeC),
-          'dollarsInFlight' : trunc(dollarsInFlightC)
-        },
+            'currentlyInfected': currentlyInfected,
+            'infectionsByRequestedTime': infectionsByRequestedTimeC,
+            'severeCasesByRequestedTime': severeCasesByRequestedTimeC,
+            'hospitalBedsByRequestedTime': hospitalBedsByRequestedTimeC,
+            'casesForICUByRequestedTime': trunc(casesForICUByRequestedTimeC),
+            'casesForVentilatorsByRequestedTime': trunc(casesForVentilatorsByRequestedTimeC),
+            'dollarsInFlight': trunc(dollarsInFlightC)
+            },
         'severeImpact': {
-          'currentlyInfected': severeImpact,
-          'infectionsByRequestedTime' : infectionsByRequestedTimeS,
-          'severeCasesByRequestedTime' : severeCasesByRequestedTimeS,
-          'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS,
-          'casesForICUByRequestedTime' : trunc(casesForICUByRequestedTimeS),
-          'casesForVentilatorsByRequestedTime' : trunc(casesForVentilatorsByRequestedTimeS),
-          'dollarsInFlight' : trunc(dollarsInFlightS)
-        }
-    }
+            'currentlyInfected': severeImpact,
+            'infectionsByRequestedTime': infectionsByRequestedTimeS,
+            'severeCasesByRequestedTime': severeCasesByRequestedTimeS,
+            'hospitalBedsByRequestedTime': hospitalBedsByRequestedTimeS,
+            'casesForICUByRequestedTime': trunc(casesForICUByRequestedTimeS),
+            'casesForVentilatorsByRequestedTime': trunc(casesForVentilatorsByRequestedTimeS),
+            'dollarsInFlight': trunc(dollarsInFlightS)
+            }
+      }
 
     return data
