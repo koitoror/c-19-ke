@@ -47,7 +47,7 @@ def estimator(data):
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
           'casesForICUByRequestedTime' : casesForICUByRequestedTimeC,
           'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeC,
-          'dollarsInFlight' : dollarsInFlightC
+          'dollarsInFlight' : float(dollarsInFlightC)
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
@@ -56,7 +56,7 @@ def estimator(data):
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS,
           'casesForICUByRequestedTime' : casesForICUByRequestedTimeS,
           'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeS,
-          'dollarsInFlight' : dollarsInFlightS
+          'dollarsInFlight' : float(dollarsInFlightS)
         }
     }
 
