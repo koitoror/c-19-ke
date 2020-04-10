@@ -30,8 +30,8 @@ def estimator(data):
 
     casesForICUByRequestedTimeC = float(.05 * infectionsByRequestedTimeC)
     casesForICUByRequestedTimeS = float(.05 * infectionsByRequestedTimeS)
-    casesForVentilatorsByRequestedTimeC = float(.02 * infectionsByRequestedTimeC)
-    casesForVentilatorsByRequestedTimeS = float(.02 * infectionsByRequestedTimeS)
+    casesForVentilatorsByRequestedTimeC = int(.02 * infectionsByRequestedTimeC)
+    casesForVentilatorsByRequestedTimeS = int(.02 * infectionsByRequestedTimeS)
 
     avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
@@ -40,7 +40,7 @@ def estimator(data):
 
     def round_up(n, decimals=0):
         multiplier = 10 ** decimals
-        return float(n * multiplier) / multiplier
+        return int(n * multiplier) / multiplier
     
     def truncate(n, decimals=0):
         multiplier = 10 ** decimals
@@ -56,7 +56,7 @@ def estimator(data):
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
           'casesForICUByRequestedTime' : casesForICUByRequestedTimeC,
           'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeC,
-          'dollarsInFlight' : int(truncate(dollarsInFlightC))
+          'dollarsInFlight' : truncate(dollarsInFlightC)
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
@@ -65,7 +65,7 @@ def estimator(data):
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS,
           'casesForICUByRequestedTime' : casesForICUByRequestedTimeS,
           'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeS,
-          'dollarsInFlight' : int(truncate(dollarsInFlightS))
+          'dollarsInFlight' : truncate(dollarsInFlightS)
         }
     }
 
