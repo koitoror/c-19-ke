@@ -38,6 +38,10 @@ def estimator(data):
     dollarsInFlightC = infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
     dollarsInFlightS = infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
 
+    def truncate1(n, decimals=0):
+        multiplier = 10 ** decimals
+        return int(n * multiplier) / multiplier
+    
     def truncate(n, decimals=0):
         multiplier = 10 ** decimals
         return floor(n * multiplier) / multiplier
@@ -51,7 +55,7 @@ def estimator(data):
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
           'casesForICUByRequestedTime' : casesForICUByRequestedTimeC,
           'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeC,
-          'dollarsInFlight' : truncate(dollarsInFlightC)
+          'dollarsInFlight' : truncate1(truncate(dollarsInFlightC))
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
@@ -60,7 +64,7 @@ def estimator(data):
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeS,
           'casesForICUByRequestedTime' : casesForICUByRequestedTimeS,
           'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeS,
-          'dollarsInFlight' : truncate(dollarsInFlightS)
+          'dollarsInFlight' : truncate1(truncate(dollarsInFlightS))
         }
     }
 
