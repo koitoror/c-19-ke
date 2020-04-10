@@ -67,8 +67,8 @@ def estimator(data):
     #         return round_down(x)
 
     def trunc(n):
-
-        return int(n * 1) / 1.0
+          
+        int(n * 1) / 1.0
 
     data = {
         'data': data,
