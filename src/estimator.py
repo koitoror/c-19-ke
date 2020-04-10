@@ -28,8 +28,8 @@ def estimator(data):
     hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
     hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
 
-    casesForICUByRequestedTimeC = float(.05 * infectionsByRequestedTimeC)
-    casesForICUByRequestedTimeS = float(.05 * infectionsByRequestedTimeS)
+    casesForICUByRequestedTimeC = int(.05 * infectionsByRequestedTimeC)
+    casesForICUByRequestedTimeS = int(.05 * infectionsByRequestedTimeS)
     casesForVentilatorsByRequestedTimeC = int(.02 * infectionsByRequestedTimeC)
     casesForVentilatorsByRequestedTimeS = int(.02 * infectionsByRequestedTimeS)
 
