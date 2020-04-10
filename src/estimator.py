@@ -1,4 +1,4 @@
-from math import floor, ceil
+from math import floor, ceil, trunc
 
 
 def requestedDays(data):
@@ -66,9 +66,9 @@ def estimator(data):
     #         x = floor(n * multiplier) / multiplier
     #         return round_down(x)
 
-    def trunc(n):
+#     def trunc(n):
           
-        int(n * 1) / 1.0
+#         return int(n * 1) / 1.0
 
     data = {
         'data': data,
