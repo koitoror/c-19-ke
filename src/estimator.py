@@ -1,4 +1,4 @@
-from math import floor
+from math import floor, ceil
 
 def requestedDays(data):
     if data['periodType'] == 'days':
