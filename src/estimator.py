@@ -42,7 +42,7 @@ def estimator(data):
         multiplier = 10 ** decimals
         return int(n * multiplier) / multiplier
     
-    def truncate(n, decimals=1):
+    def truncate(n, decimals=0):
         multiplier = 10 ** decimals
         x = floor(n * multiplier) / multiplier
         return round_up(x)
