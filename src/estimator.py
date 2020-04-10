@@ -28,10 +28,10 @@ def estimator(data):
     hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
     hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
 
-    casesForICUByRequestedTimeC = int(.05 * infectionsByRequestedTimeC)
-    casesForICUByRequestedTimeS = int(.05 * infectionsByRequestedTimeS)
-    casesForVentilatorsByRequestedTimeC = int(.02 * infectionsByRequestedTimeC)
-    casesForVentilatorsByRequestedTimeS = int(.02 * infectionsByRequestedTimeS)
+    casesForICUByRequestedTimeC = float(.05 * infectionsByRequestedTimeC)
+    casesForICUByRequestedTimeS = float(.05 * infectionsByRequestedTimeS)
+    casesForVentilatorsByRequestedTimeC = float(.02 * infectionsByRequestedTimeC)
+    casesForVentilatorsByRequestedTimeS = float(.02 * infectionsByRequestedTimeS)
 
     avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
@@ -44,7 +44,7 @@ def estimator(data):
     
     def truncate(n, decimals=0):
         multiplier = 10 ** decimals
-        x = floor(n * multiplier) / multiplier
+        x = ceil(n * multiplier) / multiplier
         return round_up(x)
 
     data = {
