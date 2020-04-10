@@ -67,10 +67,10 @@ def estimator(data):
 #         x = floor(n * multiplier) / multiplier
 #         return round_down(x)
 
-    def truncate(num, digits):
+    def truncate(num, digits=0):
         sp = str(num).split('.')
         x = '.'.join([sp[0], sp[1][:digits]])
-      #   return float(x)
+        #   return float(x)
         return x
 
 
