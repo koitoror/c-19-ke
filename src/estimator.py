@@ -40,11 +40,11 @@ def estimator(data):
 
     def round_up(n, decimals=0):
         multiplier = 10 ** decimals
-        return round(int(n * multiplier) / multiplier)
+        return round(int(n * multiplier) / multiplier, 0)
     
     def truncate(n, decimals=0):
         multiplier = 10 ** decimals
-        x = ceil(n * multiplier) / multiplier
+        x = floor(n * multiplier) / multiplier
         return round_up(x, 0)
 
     data = {
