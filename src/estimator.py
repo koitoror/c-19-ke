@@ -38,7 +38,7 @@ def estimator(data):
     dollarsInFlightC = infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
     dollarsInFlightS = infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
 
-    def truncate(n, decimals=1):
+    def truncate(n, decimals=0):
         multiplier = 10 ** decimals
         return floor(n * multiplier) / multiplier
 
