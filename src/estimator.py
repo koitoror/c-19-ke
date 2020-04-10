@@ -57,15 +57,22 @@ def estimator(data):
     dollarsInFlightS = infectionsByRequestedTimeS * \
         avgDailyIncomePopulation * avgDailyIncomeInUSD * days
 
-    def round_down(n, decimals=0):
-      #   multiplier = 10 ** decimals
-      #   return floor(n * multiplier) / multiplier
-        return n // 1
+#     def round_down(n, decimals=0):
+#         #   multiplier = 10 ** decimals
+#         #   return floor(n * multiplier) / multiplier
+#         return n // 1
 
-    def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        x = floor(n * multiplier) / multiplier
-        return round_down(x)
+#     def truncate(n, decimals=0):
+#         multiplier = 10 ** decimals
+#         x = floor(n * multiplier) / multiplier
+#         return round_down(x)
+
+    def truncate(num, digits):
+        sp = str(num).split('.')
+        x = '.'.join([sp[0], sp[1][:digits]])
+      #   return float(x)
+        return x
+
 
 #     def truncate(n):
 
