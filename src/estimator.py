@@ -1,3 +1,5 @@
+from math import floor
+
 def requestedDays(data):
     if data['periodType'] == 'days':
           requestedTime = data['timeToElapse']
@@ -36,9 +38,9 @@ def estimator(data):
     dollarsInFlightC = infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
     dollarsInFlightS = infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
 
-    def truncate(n, decimals=0):
+    def truncate(n, decimals=1):
         multiplier = 10 ** decimals
-        return float(n * multiplier) / multiplier
+        return floor(n * multiplier) / multiplier
 
     data = {
         'data' : data,
