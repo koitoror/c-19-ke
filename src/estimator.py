@@ -49,7 +49,7 @@ def estimator(data):
           'hospitalBedsByRequestedTime' : hospitalBedsByRequestedTimeC,
           'casesForICUByRequestedTime' : casesForICUByRequestedTimeC,
           'casesForVentilatorsByRequestedTime' : casesForVentilatorsByRequestedTimeC,
-          'dollarsInFlight' : float(dollarsInFlightC)
+          'dollarsInFlight' : truncate(dollarsInFlightC)
         },
         'severeImpact': {
           'currentlyInfected': severeImpact,
