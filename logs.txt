@@ -1,0 +1,4 @@
+
+1586631121.2981572 		 GET 		 /api/v1/on-covid-19/logs 		 200 		 1 ms 
+1586631135.621875 		 POST 		 /api/v1/on-covid-19/json 		 200 		 10 ms 
+1586631141.09227 		 POST 		 /api/v1/on-covid-19/xml 		 200 		 24 ms 
