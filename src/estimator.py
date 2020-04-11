@@ -3,14 +3,14 @@ from math import floor, ceil, trunc
 
 def requestedDays(data):
     if data['periodType'] == 'days':
-        requestedTime = data['timeToElapse']
-        return requestedTime
-    elif data['periodType'] == 'weeks':
-        requestedTime = data['timeToElapse'] * 7
-        return requestedTime
-    elif data['periodType'] == 'months':
-        requestedTime = data['timeToElapse'] * 30
-        return requestedTime
+        requestedTimeD = data['timeToElapse']
+        return requestedTimeD
+    if data['periodType'] == 'weeks':
+        requestedTimeW = data['timeToElapse'] * 7
+        return requestedTimeW
+    if data['periodType'] == 'months':
+        requestedTimeM = data['timeToElapse'] * 30
+        return requestedTimeM
 
 
 def truncate(n):
@@ -34,10 +34,10 @@ def estimator(data):
     hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
     hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
 
-    casesForICUByRequestedTimeC = float(.05 * infectionsByRequestedTimeC)
-    casesForICUByRequestedTimeS = float(.05 * infectionsByRequestedTimeS)
-    casesForVentilatorsByRequestedTimeC = float( .02 * infectionsByRequestedTimeC)
-    casesForVentilatorsByRequestedTimeS = float( .02 * infectionsByRequestedTimeS)
+    casesForICUByRequestedTimeC = int(.05 * infectionsByRequestedTimeC)
+    casesForICUByRequestedTimeS = int(.05 * infectionsByRequestedTimeS)
+    casesForVentilatorsByRequestedTimeC = int( .02 * infectionsByRequestedTimeC)
+    casesForVentilatorsByRequestedTimeS = int( .02 * infectionsByRequestedTimeS)
 
     avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
