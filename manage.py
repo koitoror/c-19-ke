@@ -1,10 +1,9 @@
 from flask import Flask, Blueprint, request, jsonify, g
 from flask_restplus import Resource, Api, Namespace, fields, reqparse
 from dicttoxml import dicttoxml
-import xml.etree.ElementTree as ET
-from bs4 import BeautifulSoup
 import time
-from datetime import datetime, timezone
+from datetime import datetime
+import pytz
 
 
 # Local imports
@@ -12,16 +11,7 @@ from src.estimator import estimator
 
 app = Flask(__name__)
 
-api_v1 = Blueprint('api', __name__)
-
 api = Api(app)
-# api = Api(
-#     api_v1, title='Covid-19 API :: v1', doc='/', version='1.0', 
-#     # path='/api/v1/on-covid-19',
-#     description='Covid-19 is a online tool to estimate the impact and severity of Covid-19.',)
-
-# del api.namespaces[0]
-# api.add_namespace(new_ns, path='/api/v1/auth')
 
 @app.before_request
 def before_req():
@@ -29,18 +19,20 @@ def before_req():
 
 
 @app.after_request
-def after_req(resp):
+def after_req(res):
     f = open('logs.txt', 'a+')
-    # time_stamp = datetime.utcnow().replace(tzinfo=timezone.utc)
-    time_stamp = time.time()
+    # time_stamp = int(time.time() * 1000)
+    time_stamp = int(datetime.now(tz=pytz.utc).timestamp() * 1000) 
     req_method = request.method
-    req_path = request.path
+    req_path = request.path[8:]
     res_time = round(time.time() * 1000 - g.start)
-    res_status_code = resp.status_code
+    res_status_code = res.status_code
 
-    f.write("{} \t\t {} \t\t {} \t\t {} \t\t {} ms \n".format(time_stamp, req_method, req_path, res_status_code, res_time))
+    # f.write("{} \t\t {} \t\t {} \t\t {} \t\t done in {} ms \n".format(time_stamp, req_method, req_path, res_status_code, res_time))
+    f.write("{} \t\t {} \t\t done in {:.2f} seconds \n".format(time_stamp,  req_path, res_time/10))
+
     f.close()
-    return resp
+    return res
 
 @api.route('/api/v1/on-covid-19/json')
 class InJson(Resource):
@@ -48,12 +40,10 @@ class InJson(Resource):
         return {'hello': 'json'}
 
     def post(self):
-        # def get_estimation_default():
         req_data = request.get_json()
         res = estimator(req_data)
 
         return jsonify(res)
-        # return {}
 
 @api.route('/api/v1/on-covid-19/xml')
 class InXml(Resource):
@@ -71,28 +61,23 @@ class InXml(Resource):
         # xml = dicttoxml(dic, custom_root='test', attr_type=False)
         # xml = dicttoxml(arr, custom_root='test', attr_type=False)
         # xml = xml.decode('utf8').replace("'", '"')
-        # xml = ET.fromstring(xml)
-        # xml = BeautifulSoup(xml)
         xml = xml.decode('utf8')
 
         return xml
-
-        # return {}
-
+        
 
 @api.route('/api/v1/on-covid-19/logs')
 class Logs(Resource):
     def get(self):
         f = open('logs.txt', 'r')
-        resp = f.read()
+        res = f.read()
         f.close()
 
-        return resp    
-        # return {'hello': 'logs'}
+        return res    
 
     def post(self):
 
-        return {}
+        return {'hello': 'logs'}
 
 if __name__ == '__main__':
     app.run(debug=True)
