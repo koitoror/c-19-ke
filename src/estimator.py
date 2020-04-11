@@ -27,9 +27,9 @@ def estimator(data):
     infectionsByRequestedTimeS = int(severeImpact * 2 ** requestedTimeSet)
 
     #     population = data['population']
+    severeCasesByRequestedTimeC = int(.15 * infectionsByRequestedTimeC)
+    severeCasesByRequestedTimeS = int(.15 * infectionsByRequestedTimeS)
     totalHospitalBeds = data['totalHospitalBeds']
-    severeCasesByRequestedTimeC = float(.15 * infectionsByRequestedTimeC)
-    severeCasesByRequestedTimeS = float(.15 * infectionsByRequestedTimeS)
     expectedHospitalBeds = (.35 * totalHospitalBeds)
     hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
     hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
@@ -43,25 +43,7 @@ def estimator(data):
     avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
     dollarsInFlightC = infectionsByRequestedTimeC * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
     dollarsInFlightS = infectionsByRequestedTimeS * avgDailyIncomePopulation * avgDailyIncomeInUSD * days
-
-    #     def round_down(n, decimals=0):
-    #         #   multiplier = 10 ** decimals
-    #         #   return floor(n * multiplier) / multiplier
-    #         return n // 1
-
-    #     def truncate(n, decimals=0):
-    #         multiplier = 10 ** decimals
-    #         x = floor(n * multiplier) / multiplier
-    #         return round_down(x)
-
-    #     def truncate(num, digits=0):
-    #         sp = str(num).split('.')
-    #         x = '.'.join([sp[0], sp[1][:digits]])
-    #         #   return float(x)
-    #         return x
-
-    #     def truncate(n):
-    #         return n // 1
+    
 
     data = {
         'data': data,
