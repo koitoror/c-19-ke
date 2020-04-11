@@ -22,15 +22,15 @@ def estimator(data):
     currentlyInfected = reportedCases * 10
     severeImpact = currentlyInfected * 5
     days = requestedDays(data)
-    requestedTimeSet = days // 3
-    infectionsByRequestedTimeC = float(currentlyInfected * 2 ** requestedTimeSet)
-    infectionsByRequestedTimeS = float(severeImpact * 2 ** requestedTimeSet)
+    requestedTimeSet = int(days // 3)
+    infectionsByRequestedTimeC = int(currentlyInfected * 2 ** requestedTimeSet)
+    infectionsByRequestedTimeS = int(severeImpact * 2 ** requestedTimeSet)
 
     #     population = data['population']
     totalHospitalBeds = data['totalHospitalBeds']
     severeCasesByRequestedTimeC = float(.15 * infectionsByRequestedTimeC)
     severeCasesByRequestedTimeS = float(.15 * infectionsByRequestedTimeS)
-    expectedHospitalBeds = float(.35 * totalHospitalBeds)
+    expectedHospitalBeds = (.35 * totalHospitalBeds)
     hospitalBedsByRequestedTimeC = int(expectedHospitalBeds - severeCasesByRequestedTimeC)
     hospitalBedsByRequestedTimeS = int(expectedHospitalBeds - severeCasesByRequestedTimeS)
 
