@@ -6,7 +6,7 @@ from datetime import datetime
 import pytz
 
 
-# Local imports
+# Local import
 from src.estimator import estimator
 
 app = Flask(__name__)
@@ -21,7 +21,6 @@ def before_req():
 @app.after_request
 def after_req(res):
     f = open('logs.txt', 'a+')
-    # time_stamp = int(time.time() * 1000)
     time_stamp = int(datetime.now(tz=pytz.utc).timestamp() * 1000) 
     req_method = request.method
     req_path = request.path[8:]
@@ -54,14 +53,9 @@ class InXml(Resource):
         # arr = []
         req_data = request.get_json()
         res = estimator(req_data)
-        dic = {'response': res}
-        # arr.append(dic)
-        # xml = dicttoxml(res)
-        xml = dicttoxml(dic)
-        # xml = dicttoxml(dic, custom_root='test', attr_type=False)
-        # xml = dicttoxml(arr, custom_root='test', attr_type=False)
-        # xml = xml.decode('utf8').replace("'", '"')
-        xml = xml.decode('utf8')
+        xml = dicttoxml(res, custom_root='response', attr_type=False)
+        xml = xml.decode('utf8').replace("'", '"')
+        # xml = xml.decode('utf8')
 
         return xml
         
