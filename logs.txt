@@ -1,0 +1,3 @@
+1586642822857 		 on-covid-19/logs 		 done in 1.90 seconds 
+1586642856388 		 on-covid-19/xml 		 done in 0.75 seconds 
+1586642881270 		 on-covid-19/json 		 done in 1.30 seconds 
